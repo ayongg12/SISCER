@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="YOLO26s object detection dashboard powered by Roboflow." />
+  <title>YOLO26 Vision | Object Detection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">Y</div><div><strong>YOLO<span>26</span> VISION</strong><small>COMPUTER VISION SYSTEM</small></div></div>
+      <div class="side-label">WORKSPACE</div>
+      <div class="nav-item active"><span class="nav-icon">▦</span> Live Detection <span class="nav-dot"></span></div>
+      <div class="side-label second">SYSTEM</div>
+      <div class="system-card"><span class="status-indicator"></span><div><b>Roboflow API</b><small id="apiStatus">Checking connection</small></div></div>
+      <div class="sidebar-footer"><div class="avatar">CV</div><div><b>Vision Operator</b><small>Local session</small></div></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar"><div><div class="eyebrow">COMPUTER VISION / WORKSPACE</div><h1>Live Object Detection</h1><p>Real-time object recognition powered by YOLO26s workflow.</p></div><div class="topbar-right"><span class="secure-tag"> <i></i> SECURE INFERENCE</span><span class="date-label" id="clock">--:--:--</span></div></header>
+
+      <section class="metrics-grid">
+        <article class="metric-card"><div class="metric-head">TOTAL DETECTIONS <span>◉</span></div><div class="metric-value" id="totalDetections">0</div><div class="metric-foot">Objects detected this session</div></article>
+        <article class="metric-card"><div class="metric-head">CURRENT OBJECTS <span>⌗</span></div><div class="metric-value" id="currentObjects">0</div><div class="metric-foot">Objects in latest frame</div></article>
+        <article class="metric-card"><div class="metric-head">INFERENCE LATENCY <span>◷</span></div><div class="metric-value"><span id="latency">—</span><em>ms</em></div><div class="metric-foot">Client-observed response time</div></article>
+        <article class="metric-card"><div class="metric-head">SYSTEM STATUS <span>⌁</span></div><div class="metric-value status-value" id="systemStatus">IDLE</div><div class="metric-foot" id="statusFoot">Camera is not active</div></article>
+      </section>
+
+      <section class="workspace-grid">
+        <article class="panel video-panel">
+          <div class="panel-header"><div><div class="panel-title">CAMERA FEED <span class="live-pill" id="livePill">OFFLINE</span></div><div class="panel-subtitle">Live stream and model annotations</div></div><div class="resolution-tag">1280 × 720 TARGET</div></div>
+          <div class="video-stage" id="videoStage">
+            <video id="camera" autoplay muted playsinline></video>
+            <canvas id="overlay"></canvas>
+            <div class="placeholder" id="placeholder"><div class="camera-symbol">◉</div><b>Camera feed is inactive</b><span>Start the camera to begin object detection</span></div>
+            <div class="stage-corner corner-tl"></div><div class="stage-corner corner-tr"></div><div class="stage-corner corner-bl"></div><div class="stage-corner corner-br"></div>
+            <div class="frame-info" id="frameInfo">WAITING FOR INPUT</div>
+          </div>
+          <div class="video-controls"><button class="btn btn-primary" id="startBtn"><span>▶</span> Start Camera</button><button class="btn btn-secondary" id="stopBtn" disabled>■ Stop</button><button class="btn btn-secondary" id="captureBtn" disabled>◎ Capture</button><div class="control-spacer"></div><label class="interval-control">INTERVAL <select id="interval"><option value="700">0.7 sec</option><option value="1000" selected>1.0 sec</option><option value="1500">1.5 sec</option><option value="2000">2.0 sec</option></select></label></div>
+          <div class="notice" id="notice">Allow camera access when your browser asks. Camera access requires HTTPS (Vercel provides HTTPS automatically).</div>
+        </article>
+
+        <article class="panel results-panel"><div class="panel-header"><div><div class="panel-title">DETECTION RESULTS</div><div class="panel-subtitle">Latest inference output</div></div><span class="result-count" id="resultCount">0 RESULTS</span></div><div class="results-list" id="resultsList"><div class="empty-state"><div>⌕</div><b>No detections yet</b><span>Detected objects will appear here.</span></div></div><div class="results-footer"><span>MODEL WORKFLOW</span><b>YOLO26s · Roboflow</b></div></article>
+      </section>
+      <footer class="footer"><span>YOLO26 VISION INTERFACE</span><span>INFERENCE VIA ROBOFLOW SERVERLESS · DEPLOYMENT READY</span></footer>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
