@@ -1,0 +1,15 @@
+{
+  "name": "yolo26-roboflow-vercel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Real-time browser webcam object detection using Roboflow Workflows and Vercel Functions",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "vercel dev"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
